@@ -1,12 +1,12 @@
 package uk.me.berndporr.iirj;
 
-public class DoubleSignal
+class DoubleSignal
 {
 	private final double[] xValues;
 	private final double[] values;
 	private final String name;
 
-	public DoubleSignal(int length, String name) {
+	DoubleSignal(int length, String name) {
 		xValues = new double[length];
 		values = new double[length];
 		this.name = name;
@@ -25,11 +25,11 @@ public class DoubleSignal
 		return xValues[index];
 	}
 
-	public double[] getxValues() {
+	double[] getxValues() {
 		return xValues;
 	}
 
-	public double[] getValues() {
+	double[] getValues() {
 		return values;
 	}
 
@@ -37,7 +37,7 @@ public class DoubleSignal
 		return values.length;
 	}
 
-	public String getName() {
+	String getName() {
 		return this.name;
 	}
 }
