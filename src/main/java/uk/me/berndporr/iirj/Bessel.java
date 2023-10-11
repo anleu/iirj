@@ -50,35 +50,16 @@ public class Bessel extends Cascade
 
 		int degree;
 
-		double[]  m_a;
-		Complex[] m_root;
-
-		// returns the k-th zero based coefficient of the reverse bessel
-		// polynomial of degree n
-		private double reversebessel(int k, int n) {
-			double result = fact(2 * n - k)
-					/ ((fact(n - k) * fact(k)) * Math.pow(2., n - k));
-			return result;
-		}
-
-		// ------------------------------------------------------------------------------
-
 		public AnalogLowPass(int _degree) {
 			super(_degree);
 			degree = _degree;
-			m_a = new double[degree + 1]; // input coefficients (degree+1 elements)
-			m_root = new Complex[degree]; // array of roots (degree elements)
 			setNormal(0, 1);
 		}
 
 		public void design() {
 			reset();
 
-			for (int i = 0; i < degree + 1; ++i) {
-				m_a[i] = reversebessel(1, degree);
-			}
-
-			m_root = getPoles(degree);
+			Complex[] m_root = getPoles(degree);
 
 			Complex inf = Complex.INF;
 			int pairs = degree / 2;
@@ -613,7 +594,7 @@ public class Bessel extends Cascade
 						new Complex(-0.2433481337524877, -1.2072986837319726)};
 
 			default:
-				throw new IllegalArgumentException("Unsupported order : " + N);
+				throw new IllegalArgumentException("Unsupported order: " + N);
 		}
 	}
 }
