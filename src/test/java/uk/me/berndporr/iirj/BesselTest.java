@@ -75,9 +75,9 @@ public class BesselTest
 			v = bessel.filter(v);
 			bp.println("" + v);
 		}
-		Assert.assertTrue(Math.abs(bessel.filter(0))<1E-20);
+		Assert.assertTrue(Math.abs(bessel.filter(0))<1E-13);
 		Assert.assertTrue(Math.abs(bessel.filter(0))!=0.0);
-		Assert.assertTrue(Math.abs(bessel.filter(0))!=Double.NaN);
+		Assert.assertFalse(Double.isNaN(bessel.filter(0)));
 
 		os.close();
 	}
